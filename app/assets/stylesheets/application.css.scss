@@ -1,0 +1,166 @@
+
+
+@font-face {
+    font-family: 'FontePrincipal';
+    src: asset-url('TTInterfaces-Medium.ttf');
+}
+
+body{
+    padding-top: 16px;
+    padding-bottom: 16px;
+    font-family: 'FontePrincipal' !important;
+}
+
+
+@media only screen and (max-width: 575px) {
+  .proponente {
+    margin-right: 14px;
+  }
+  body{
+    padding-left: 14px
+  }
+}
+
+@media only screen and (min-width: 576px) {
+  .proponente {
+    margin-right: 20px;
+  }
+  body{
+    padding-left: 20px
+  }
+}
+
+.proponente {
+    color: #5f6368ff;
+    border-radius: 30px;
+    min-width: 275px;
+    padding: 18px;
+    box-shadow: 5px 5px 30px -10px rgb(162, 164, 167);
+    -webkit-box-shadow: 5px 5px 30px -10px rgb(162, 164, 167);
+    -moz-box-shadow: 5px 5px 30px -10px rgb(162, 164, 167);
+}
+
+.proponente:hover{
+    box-shadow: 5px 5px 30px -10px rgb(86, 87, 88);
+  -webkit-box-shadow: 5px 5px 30px -10px rgb(86, 87, 88);
+  -moz-box-shadow: 5px 5px 30px -10px rgb(86, 87, 88);
+}
+
+.nome{
+    font-size: 22px;
+    color: #333333ff;
+    line-height: 1.2;
+}
+
+.icone{
+    margin-right: 8px;
+}
+
+.desconto{
+    color: #dd4b39ff;
+    margin-left: 14px
+}
+
+#barra-pesquisa{
+    border-radius: 9999px;
+    line-height: 1;
+    padding-left: 24px;
+    background-color: #f2f2f2ff;
+    margin: 20px 20px 14px 0;
+}
+
+#barra-pesquisa input[type=text] {
+    outline: none;
+    border-radius: 9999px;
+    border: none;
+    background-color: #f2f2f2ff;
+    color: #5f6368ff;
+    padding: 16px 24px 16px 14px;
+}
+
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+    color: #5f636876;
+    opacity: 1; /* Firefox */
+  }
+  
+  :-ms-input-placeholder { /* Internet Explorer 10-11 */
+    color: #5f636876;
+  }
+  
+  ::-ms-input-placeholder { /* Microsoft Edge */
+    color: #5f636876;
+  }
+
+  .menu, #novo-prop{
+    outline: none;
+    border: none;
+    border-radius: 9999px;
+  }
+
+  .menu{
+    background-color: white;
+  }
+
+  #novo-prop{
+    background-color: #02c15fff;
+    padding: 16px 16px;
+    position: fixed;
+    z-index: 10;
+    right: 16px;
+    bottom: 16px;
+  }
+
+  .dropdown-menu{
+      border-radius: 20px !important;
+  }
+
+  .icone-menu{
+      padding: 8px 0px 8px 20px;
+      width: 100%;
+      outline:none;
+      border: none;
+      background-color: white;
+      border-radius: 10px;
+      text-align: left;
+
+  }
+
+  .excluir{
+    color: #dd4b39ff; 
+  }
+
+  .editar{
+      color: #5f6368ff;
+  }
+
+  .excluir:hover{
+    background-color: #ffe5e5;
+  }
+
+  .editar:hover{
+    background-color: #f2f2f2ff;
+  }
+
+  #btn-excluir{
+    background-color: #dd4b39ff;
+    color: white;
+    outline: none;
+    border: none;
+    border-radius: 9999px;
+    padding: 8px 24px;
+  }
+
+  #btn-cancelar{
+    background-color: white;
+    color: #5f6368ff;
+    outline: none;
+    border: none;
+    border-radius: 9999px;
+    padding: 8px 24px;
+  }
+
+  #quantidade{
+    font-size: 14px;
+    color: #5f6368ff;
+  }
+

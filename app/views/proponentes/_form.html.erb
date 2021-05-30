@@ -1,0 +1,158 @@
+<%= stylesheet_link_tag "novo" %>
+
+<div>
+
+  <%= form_with model: proponente do |form| %>
+    <div class="col-xl-6 col-lg-8 pe-2 mx-auto mt-4">
+      <%= form.label :nome %>
+      <%= form.text_field :nome %>
+      <div class="erro">
+        <% proponente.errors.full_messages_for(:nome).each do |message| %>
+          <div><%= message %></div>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="row px-0 mx-auto">
+      <div class="col-xl-3 col-lg-4 ps-0 ms-auto">
+        <%= form.label :cpf, 'CPF'  %>
+        <%= form.text_field :cpf, placeholder: "000.000.000-00", :onkeypress=> "$(this).mask('000.000.000-00');" %>
+        <div class="erro">
+          <% proponente.errors.full_messages_for(:cpf).each do |message| %>
+            <div><%= 'CPF ' + message.split(' ')[1..message.size].join(' ') %></div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="col-xl-3 col-lg-4 px-0 me-auto">
+        <%= form.label :nasc, 'Data de nascimento' %>
+        <%= form.date_select :nasc, :start_year => 1900, :end_year => Time.now.year %>
+        <div class="erro">
+          <% proponente.errors.full_messages_for(:nasc).each do |message| %>
+            <div><%= message %></div>
+          <% end %>
+        </div>
+      </div>
+
+    <div class="row px-0 mx-0">
+        <div class="col-xl-5  col-lg-6 ps-0 pe-2 ms-auto">
+          <%= form.label :log, 'Logradouro' %>
+          <%= form.text_field :log %>
+          <div class="erro">
+            <% proponente.errors.full_messages_for(:log).each do |message| %>
+              <div><%= 'Logradouro ' + message.split(' ')[1..message.size].join(' ') %></div>
+            <% end %>
+          </div>
+        </div>
+
+        <div class="col-xl-1  col-lg-2 ps-0 me-auto">
+          <%= form.label :num, 'Número' %>
+          <%= form.text_field :num, :onkeypress=> "$(this).mask('000000000');" %>
+          <div class="erro">
+            <% proponente.errors.full_messages_for(:num).each do |message| %>
+              <div><%= 'Número inválido' %></div>
+            <% end %>
+          </div>
+        </div>
+    </div>
+
+    <div class="row px-0 mx-0">
+      <div class="col-xl-4  col-lg-5 ps-0 ms-auto">
+        <%= form.label :bairro %>
+        <%= form.text_field :bairro %>
+        <div class="erro">
+          <% proponente.errors.full_messages_for(:bairro).each do |message| %>
+            <div><%= message %></div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="col-xl-2  col-lg-3 ps-0 me-auto">
+        <%= form.label :cep, 'CEP' %>
+        <%= form.text_field :cep, placeholder: "00000-000", :onkeypress=> "$(this).mask('00000-000');" %>
+        <div class="erro">
+          <% proponente.errors.full_messages_for(:cep).each do |message| %>
+            <div><%= 'CEP ' + message.split(' ')[1..message.size].join(' ') %></div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+
+    <div class="row px-0 mx-0">
+
+      <div class="col-xl-4  col-lg-5 ps-0 ms-auto">
+        <%= form.label :cidade %>
+        <%= form.text_field :cidade %>
+        <div class="erro">
+          <% proponente.errors.full_messages_for(:cidade).each do |message| %>
+            <div><%= message %></div>
+          <% end %>
+        </div>
+      </div>
+
+      <div class="col-xl-2 col-lg-3 ps-0 me-auto">
+        <%= form.label :estado %>
+        <%= form.select(:estado, ['AC', 'AL', 'AP', 'AM', 'BA', 'CE', 'DF', 'ES', 'GO', 'MA', 'MT', 'MS', 'MG', 'PA', 'PB', 'PR', 'PE', 'PI', 'RJ', 
+        'RN', 'RS', 'RO', 'RR', 'SC', 'SP', 'SE', 'TO'], {}, {}) %>
+        <div class="erro">
+          <% proponente.errors.full_messages_for(:estado).each do |message| %>
+            <div><%= message %></div>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row px-0 mx-0">
+
+      <div class="col-xl-3  col-lg-4 ps-0 pe-xl-5  ms-auto">
+        <%= form.label :salario, 'Salário' %>
+        <%= form.text_field :salario, :onkeypress=> "$(this).mask('########0.00', {reverse: true});" %>
+        <div class="erro">
+          <% proponente.errors.full_messages_for(:salario).each do |message| %>
+            <div><%= 'Salário ' + message.split(' ')[1..message.size].join(' ') %></div>
+          <% end %>
+        </div>
+      </div>
+  
+      <div class="col-xl-3  col-lg-4 pe-xl-5 ps-0 me-auto">
+        <%= form.label :desconto %>
+        <%= form.text_field :desconto, :readonly => "readonly" %>
+        <div class="erro">
+          <% proponente.errors.full_messages_for(:desconto).each do |message| %>
+            <div><%= message %></div>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="row px-0 mx-0">
+
+      <div class="col-xl-3 col-lg-4  ps-0 pe-xl-5  ms-auto">
+        <%= form.label :tel1_pes, 'Telefone pessoal' %>
+        <%= form.text_field :tel1_pes, placeholder: "ddd + número", :onkeypress=> "$(this).mask('00 000000000');" %>
+        <div class="erro">
+          <% proponente.errors.full_messages_for(:tel1_pes).each do |message| %>
+            <div><%= 'Telefone ' + message.split(' ')[2..message.size].join(' ') %></div>
+          <% end %>
+        </div>
+      </div>
+  
+      <div class="col-xl-3 col-lg-4 ps-0 pe-xl-5  me-auto">
+        <%= form.label :tel1_ref, 'Telefone referência' %>
+        <%= form.text_field :tel1_ref, placeholder: "ddd + número", :onkeypress=> "$(this).mask('00 000000000');" %>
+        <div class="erro">
+          <% proponente.errors.full_messages_for(:tel1_ref).each do |message| %>
+            <div><%= 'Telefone ' + message.split(' ')[2..message.size].join(' ') %></div>
+          <% end %>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="col-xl-4 px-0 text-center mt-4 mb-5 mx-auto">
+      <%= form.submit('Salvar proponente') %>
+    </div>
+  <% end %>
+</div>

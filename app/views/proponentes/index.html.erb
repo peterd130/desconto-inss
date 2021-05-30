@@ -1,0 +1,154 @@
+<%= stylesheet_link_tag "application" %>
+
+<h1 class="titulo pl-5">Proponentes</h1>
+
+<div class="col-xl-6 col-lg-8 col-11 d-flex" id="barra-pesquisa">
+    <%= image_tag("lupa.svg",  width: 22) %>
+    <form action="/" method="get" class="w-100" autocomplete="off">
+        <input type="text" placeholder="Pesquisar por nome ou CPF" name="query" class="w-100" value= "<%= @texto %>">
+    </form>
+</div>
+
+<div id="quantidade">
+    <%= @proponentes.length() %> registros(s) encontrado(s)  
+</div> 
+
+<button id="novo-prop">
+    <%= image_tag("novo-prop.svg", height: 30) %>
+</button>
+
+
+<div class="row px-0 mx-0 mb-5">  
+        <% @proponentes.each do |proponente| %>
+            <div class="col-xl-4 col-md-6 px-0 mx-0" style="margin-top: 20px">
+                <div class="proponente h-100">
+                    
+                    <div class="d-flex justify-content-between">
+                        <strong class="nome d-block">
+                            <%= proponente.nome %>
+                        </strong>
+                            
+                            <div class="dropdown">
+                                <button class="menu pe-0" id="dropdownMenuButton2" data-bs-toggle="dropdown">
+                                    <%= image_tag("menu.svg", height: 18) %>
+                                </button>
+                                <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuButton2">
+                                    <li>
+                                        <button class="editar icone-menu" data-id=<%= proponente.id %>>
+                                            <div class="icone d-inline-block">   
+                                                <%= image_tag("editar.svg",  width: 20) %>
+                                            </div>
+                                            Editar
+                                        </button>
+                                    </li>
+                                    <li>
+                                        <button class="excluir icone-menu" data-id=<%= proponente.id %> data-cpf=<%= proponente.cpf %>>
+                                            <div class="icone d-inline-block">  
+                                                <%= image_tag("excluir.svg",  width: 20) %>
+                                            </div>
+                                            Excluir
+                                        </button>
+                                    </li>
+                                </ul>
+                            </div>
+
+                    </div>
+
+                    <div class="d-flex mt-3">
+                        <div class="d-flex align-items-center">
+                            <div class="icone">   
+                                <%= image_tag("salario.svg",  width: 22) %>
+                            </div>
+                            <div class="d-inline-block">
+                                <%= number_to_currency(proponente.salario, unit: "R$", separator: ",", delimiter: ".") %>
+                            </div>
+                            <div class="d-inline-block desconto">
+                            - <%= number_to_currency(proponente.desconto, unit: "R$ ", separator: ",", delimiter: ".")  %>&nbsp; INSS
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="d-flex mt-3">
+                        <div class="d-flex align-items-center">
+                            <div class="icone">   
+                                <%= image_tag("nasc.svg", height: 20) %>
+                            </div>
+                            <div class="d-inline-block">
+                                <%= proponente.nasc.strftime("%d/%m/%Y") %>
+                            </div>
+                        </div>
+
+                        <div class="d-flex align-items-center ms-4">
+                            <div class="icone">  
+                                <%= image_tag("cpf.svg", width: 23) %>
+                            </div>
+                            <%= proponente.cpf %>
+                        </div>
+                    </div>
+
+                    <div class="d-flex mt-3">
+                        <div class="icone"> 
+                            <%= image_tag("local.svg", height: 20) %>
+                        </div>
+                        <div class="d-flex">
+                            <%= proponente.log %>, 
+                            nº <%= proponente.num %> - 
+                            <%= proponente.bairro %>, 
+                            <%= proponente.cidade %> -
+                            <%= proponente.estado %>,
+                            <%= proponente.cep %>
+                        </div>
+                    </div>
+
+                    <div class="d-flex mt-3 align-items-baseline">
+                        <div class="d-flex align-items-center">
+                            <div class="icone align-self-start">   
+                                <%= image_tag("telefone.svg",  width: 20) %>
+                            </div>
+
+                            <table>
+                                <tr>
+                                    <td>Pessoal</td>
+                                    <td class="d-inline-block ms-2">
+                                        <%= proponente.tel1_pes %>
+                                    </td>
+                                </tr>
+
+                                <tr>
+                                    <td>Referência</td>
+                                    <td class="d-inline-block ms-2">
+                                        <%= proponente.tel1_ref %>
+                                    </td>
+                                </tr>
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+        <% end %>
+</div>
+
+
+<!-- Modal -->
+<div class="modal fade" id="excluirModal" tabindex="-1" aria-labelledby="excluirModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="excluirModalLabel">Excluir proponente?</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        Todos os dados do proponente de CPF <strong id="cpf-excluir"></strong> serão excluídos de maneira permanente
+      </div>
+      <div class="modal-footer">
+        <button id="btn-cancelar" data-bs-dismiss="modal">Cancelar</button>
+        <button id="btn-excluir" data-id="">Excluir</button>
+      </div>
+    </div>
+  </div>
+</div>
+

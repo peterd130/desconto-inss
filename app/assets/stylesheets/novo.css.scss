@@ -1,0 +1,56 @@
+@font-face {
+    font-family: 'FontePrincipal';
+    src: asset-url('TTInterfaces-Medium.ttf');
+}
+
+body{
+    padding: 16px 0 16px 20px;
+    font-family: 'FontePrincipal' !important;
+}
+
+label{
+    display: block;
+    margin-bottom: 6px;
+    color: #5f6368ff;
+    font-size: 14px;
+}
+
+.erro{
+    color: #dd4b39ff;
+    font-size: 12px;
+    margin-top: 4px;
+    margin-bottom: 16px;
+}
+
+input[type=text] {
+    outline: none;
+    border-radius: 9999px;
+    padding: 8px 16px;
+    border: 1px solid #5f636876;
+    width: 100%;
+}
+
+input[type=text]:focus, select:focus{
+    border-color: #02c15fff;
+    box-shadow: 0 0 0 1px #02c15fff;
+}
+
+select{
+    border-radius: 9999px;
+    outline: none;
+    padding: 8px 16px;
+    min-width: 85px;
+    border: 1px solid #5f636876;
+    background-color: white;
+    -webkit-appearance: none;
+    appearance: none;
+}
+
+input[type=submit] {
+  outline: none;
+  padding: 10px 24px;
+  border: none;
+  border-radius: 9999px;
+  color: white;
+  background-color: #02c15fff;
+}
